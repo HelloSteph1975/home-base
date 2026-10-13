@@ -1,0 +1,23 @@
+{
+  "name": "home-base",
+  "version": "2.0.0",
+  "private": true,
+  "description": "A household command center: chores, bills, appointments and events for one home or several. Your data stays as Markdown notes on your own computer.",
+  "license": "MIT",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning server/index.js",
+    "demo": "node --disable-warning=ExperimentalWarning server/index.js --demo",
+    "test": "node --disable-warning=ExperimentalWarning --test \"test/*.test.js\"",
+    "test:e2e": "playwright test",
+    "setup": "node scripts/setup.js",
+    "migrate": "node --disable-warning=ExperimentalWarning scripts/migrate.js",
+    "stop": "node scripts/stop.js",
+    "install-windows": "node scripts/setup.js --windows",
+    "uninstall-windows": "node scripts/uninstall-windows.js",
+    "icon": "node scripts/make-icon.js"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.0"
+  }
+}

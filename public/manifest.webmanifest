@@ -1,0 +1,10 @@
+{
+  "name": "Home Base",
+  "short_name": "Home Base",
+  "description": "Chores, bills, appointments and events for one home or several.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf5ec",
+  "theme_color": "#faf5ec",
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
