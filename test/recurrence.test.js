@@ -12,6 +12,11 @@ test('weekly items repeat on the same weekday', () => {
   assert.deepEqual(occurrencesBetween('2026-10-06', 'weekly', '2026-10-10', '2026-10-31'), ['2026-10-13', '2026-10-20', '2026-10-27']);
 });
 
+test('biweekly items repeat every 14 days from the first date', () => {
+  assert.deepEqual(occurrencesBetween('2026-10-16', 'biweekly', '2026-11-01', '2026-12-31'), ['2026-11-13', '2026-11-27', '2026-12-11', '2026-12-25']);
+  assert.deepEqual(occurrencesBetween('2026-11-13', 'biweekly', '2026-11-01', '2026-11-12'), []);
+});
+
 test('monthly on the 31st uses the last day of short months without drifting', () => {
   assert.deepEqual(occurrencesBetween('2026-01-31', 'monthly', '2026-02-01', '2026-04-30'), ['2026-02-28', '2026-03-31', '2026-04-30']);
 });

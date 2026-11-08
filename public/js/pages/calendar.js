@@ -3,7 +3,7 @@ import { h, card, empty, money, fmtDay, fmtTime, localToday, addDays, parseDay, 
 
 const VIEWS = [['month', 'Month'], ['week', 'Week'], ['day', 'Day']];
 const TYPE_TEXT = { event: 'Event', appointment: 'Appointment', bill: 'Bill', chore: 'Chore', task: 'Project task' };
-const REPEATS = [['none', 'Does not repeat'], ['weekly', 'Every week'], ['monthly', 'Every month'], ['annual', 'Every year']];
+const REPEATS = [['none', 'Does not repeat'], ['weekly', 'Every week'], ['biweekly', 'Every 2 weeks'], ['monthly', 'Every month'], ['annual', 'Every year']];
 const CATEGORIES = ['Birthdays', 'Holidays', 'Family & Social', 'Other'];
 
 function mondayOf(s) { const d = parseDay(s); const day = d.getDay(); d.setDate(d.getDate() + (day === 0 ? -6 : 1 - day)); return ymd(d); }

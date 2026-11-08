@@ -1,12 +1,13 @@
 'use strict';
 const { isDate, addDays, addMonths } = require('./dates');
 
-const RECURRING = ['none', 'weekly', 'monthly', 'annual'];
+const RECURRING = ['none', 'weekly', 'biweekly', 'monthly', 'annual'];
 
 // The k-th occurrence, always counted from the base date so month ends don't drift.
 function nthOccurrence(base, recurring, k) {
   if (k === 0) return base;
   if (recurring === 'weekly') return addDays(base, 7 * k);
+  if (recurring === 'biweekly') return addDays(base, 14 * k);
   if (recurring === 'monthly') return addMonths(base, k);
   if (recurring === 'annual') return addMonths(base, 12 * k);
   return null;
