@@ -3,6 +3,19 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const { tempDir, writeFile, readFile, startApp } = require('./helpers');
 
+test('an every-2-weeks bill lands on every other week, three times in a long month', async (t) => {
+  const root = tempDir();
+  const app = await startApp(root, { today: '2026-10-01' });
+  t.after(() => app.close());
+  const made = await app.post('/api/bills', { name: 'Car payment', amount: 300, due_date: '2026-10-02', recurring: 'biweekly' });
+  assert.equal(made.status, 201);
+  const oct = (await app.get('/api/bills?month=2026-10')).json;
+  assert.deepEqual(oct.items.map((i) => i.date), ['2026-10-02', '2026-10-16', '2026-10-30']);
+  assert.equal(oct.due_total, 900);
+  const nov = (await app.get('/api/bills?month=2026-11')).json;
+  assert.deepEqual(nov.items.map((i) => i.date), ['2026-11-13', '2026-11-27']);
+});
+
 test('a monthly bill on the 31st: pay, double-pay refused, undo', async (t) => {
   const root = tempDir();
   const app = await startApp(root, { today: '2026-02-27' });

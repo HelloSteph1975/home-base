@@ -1,7 +1,7 @@
 import { api } from '../api.js';
 import { h, card, empty, money, fmtDay, act, toast, formDialog, confirmDialog, localToday, dueText } from '../ui.js';
 
-const REPEATS = [['none', 'Just once'], ['weekly', 'Every week'], ['monthly', 'Every month'], ['annual', 'Every year']];
+const REPEATS = [['none', 'Just once'], ['weekly', 'Every week'], ['biweekly', 'Every 2 weeks'], ['monthly', 'Every month'], ['annual', 'Every year']];
 const REPEAT_TEXT = Object.fromEntries(REPEATS);
 
 function shiftMonth(month, n) {
